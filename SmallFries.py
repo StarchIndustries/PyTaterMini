@@ -1,4 +1,5 @@
-# This script supports multiple miners, and runs with asyncronous api calls
+# This script supports multiple miners, and runs with asyncronous api calls.
+# This script uses modified code from PyTater https://github.com/Crypto2099/PyTater
 
 import asyncio
 import hashlib
@@ -21,14 +22,14 @@ all_miners = [miner_id_1, miner_id_2]
 
 
 
-###### Below code block copied from PyTater https://github.com/Crypto2099/PyTater
+
 def random_color(miner_id, block_hash: str):
     seed = zlib.crc32(bytes(block_hash + miner_id, 'ascii'))
     random.seed(seed)
     random_number = random.randint(0, 16777215)
     hex_number = '{0:06X}'.format(random_number)
     return '#' + hex_number
-######
+
 
 async def get_status(miner_id):
     try:
