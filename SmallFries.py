@@ -83,7 +83,7 @@ def get_miner_blocks(miner_id, pending_blocks):
 
 
 async def get_chain_config(block_height):
-    last_block, last_block_hash = None, None
+    block_height, last_block, last_block_hash = None, None, None
     # logging.info("Getting chain config...")
     try:
         async with httpx.AsyncClient() as client:
@@ -96,7 +96,7 @@ async def get_chain_config(block_height):
         response = res.json()
     except:
         print("Could not decode configuration!")
-        return block_height, block_height, last_block, last_block_hash
+        return block_height, last_block, last_block_hash
     try:
         if response.get('blockchain_size', 0) > block_height:
             block_height = response['blockchain_size']
