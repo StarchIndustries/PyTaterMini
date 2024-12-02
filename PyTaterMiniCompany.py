@@ -31,6 +31,7 @@ def submit_blocks(blocks):
         return json.loads(requests.post(f"{host}/submit_blocks", json=data).text)
     except Exception as e:
         print(e)
+        return []
 
 def mine():
     last_block = get_last_block()
@@ -41,7 +42,6 @@ def mine():
     miner_ids = get_miner_ids()["members"]
     for miner_id in miner_ids:
         blocks.append(solve(miner_id, last_block))
-
 
     status = submit_blocks(blocks)
     for x in status:
