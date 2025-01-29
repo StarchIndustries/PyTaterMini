@@ -50,5 +50,8 @@ def mine():
 print(f"pytater mini : mining for {company_id}")
 
 while True:
-    mine()
+    try:
+        mine()
+    except:
+        pass
     time.sleep(49)
